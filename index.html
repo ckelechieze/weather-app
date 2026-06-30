@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <!-- Tailwind link-->
+  <link rel="stylesheet" href="./src/output.css"> 
+
+  <!-- DM sans font link -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=DM   +Sans:wght@100..1000&display=swap" rel="stylesheet">
+
+  <!-- Font Bricolage Grotesque link-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+  <style>
+  .font-bricolage {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+  </style>
+  <style>
+  .font-dm {
+    font-family: "DM Sans", sans-serif;
+  }
+ </style>
+  
+  <title>Frontend Mentor | Weather app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 0.6875rem; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body class="m-0 p-0">
+
+  <!-- Main Container-->
+   <section class="bg-[#02012b] px-2">
+    <header class="flex items-center justify-between px-2">
+      <!--logo-->
+      <div class="flex items-center">
+        <img class="w-[130px] h-[130px]" src="./assets/images/logo.svg" alt="logo">
+      </div>
+      <!--units-->
+      <div class="flex items-center gap-2 bg-[#25253f] p-[5px] rounded-lg">
+        <img src="./assets/images/icon-units.svg" alt="">
+        <p class="text-white">Units</p>
+        <img src="./assets/images/icon-dropdown.svg" alt="">
+      </div>
+    </header>
+
+    <!-- Hero Section-->
+     <div>
+      <h1 class="font-bricolage text-white text-4xl font-bold text-center px-6">
+        How's the sky looking today?
+      </h1>
+
+      <!-- Input -->
+       <div class="relative mt-8 w-[343px] mx-auto">
+        <img class="absolute top-1/2 -translate-y-1/2 left-4" src="./assets/images/icon-search.svg" alt="">
+        <input 
+        id="city-input"
+        type="text"
+        placeholder="Search for a place..."
+        class="bg-[#25253f] text-white w-full rounded-lg placeholder:text-gray-400 pl-12 py-2 focus:outline-none"
+        >
+       </div>
+
+       <!-- Search button-->
+        <button 
+        id="search-button"
+        class="flex items-center justify-center bg-[#4657d9] w-[343px] text-white rounded-lg px-24 py-3 mt-4 mx-auto">
+          Search
+        </button>
+
+        <!-- Weather Display -->
+         <div class="h-[286px] w-[343px] bg-contain bg-center bg-no-repeat border-2 mx-auto mt-6"
+         style="background-image: url('./assets/images/bg-today-small.svg')"
+         >
+          <!--text-->
+          <div class="flex flex-col items-center justify-center gap-3 mt-8">
+            <h2 id="city-name" class="text-white font-semibold text-2xl">Berlin, Germany</h2>
+            <p class="text-white">Tuesday, Aug 5, 2025</p>
+          </div>
+          <!--icons-->
+          <div class="flex items-center justify-center mt-4">
+            <img class="w-[120px]" src="./assets/images/icon-sunny.webp" alt="">
+            <h2 id="current-temp" class="text-[65px] text-white font-semibold">20&deg</h2>
+          </div>
+         </div>
+     </div>
+
+     <!-- Grids -->
+      <div class="grid grid-cols-2 gap-4 mt-4 max-w-[343px] mx-auto">
+        <div class="bg-[#25253f] flex flex-col gap-4 p-4 h-[110px] rounded-lg">
+          <p class="text-gray-400">Feels like</p>
+          <p id="feels-like" class="text-white text-2xl">18&deg</p>
+        </div>
+
+        <div class="bg-[#25253f] flex flex-col gap-4 p-4 h-[110px] rounded-lg">
+          <p class="text-gray-400">Humidity</p>
+          <p id="humididty" class="text-white text-2xl font-dm">46%</p>
+        </div>
+
+        <div class="bg-[#25253f] flex flex-col gap-4 p-4 h-[110px] rounded-lg">
+          <p class="text-gray-400">Wind</p>
+          <p id="wind-speed" class="text-white text-2xl font-dm">14 km/h</p>
+        </div>
+
+        <div class="bg-[#25253f] flex flex-col gap-4 p-4 h-[110px] rounded-lg">
+          <p class="text-gray-400">Precipitation</p>
+          <p id="precipitation" class="text-white text-2xl">0 mm</p>
+        </div>
+      </div>
+
+      <!-- Daily Forecast -->
+       <div>
+        <p class="w-[343px] text-white mt-6 mx-auto font-semibold">Daily forecast</p>
+        <!-- Daily grid -->
+         <!--Tue-->
+         <div class="w-[343px] grid grid-cols-3 gap-4 mx-auto mt-4">
+          <div class="flex flex-col gap-2 rounded-lg items-center justify-between bg-[#25253f] px-2 py-4">
+            <p class="text-white">Tue</p>
+            <img class="w-[50px] h-[50px]" src="./assets/images/icon-rain.webp" alt="rain-icon">
+            <div class="w-full flex justify-between text-white">
+              <p>20&deg</p>
+              <p>14&deg</p>
+            </div>
+          </div>
+          <!--Wed-->
+          <div class="flex flex-col gap-2 rounded-lg items-center justify-between bg-[#25253f] px-2 py-4">
+            <p class="text-white">Wed</p>
+            <img class="w-[50px] h-[50px]" src="./assets/images/icon-drizzle.webp" alt="rain-icon">
+            <div class="w-full flex justify-between text-white">
+              <p>21&deg</p>
+              <p>15&deg</p>
+            </div>
+          </div>
+          <!--Thu-->
+          <div class="flex flex-col gap-2 rounded-lg items-center justify-between bg-[#25253f] px-2 py-4">
+            <p class="text-white">Thu</p>
+            <img class="w-[50px] h-[50px]" src="./assets/images/icon-sunny.webp" alt="rain-icon">
+            <div class="w-full flex justify-between text-white">
+              <p>24&deg</p>
+              <p>14&deg</p>
+            </div>
+          </div>
+          <!--Fri-->
+          <div class="flex flex-col gap-2 rounded-lg items-center justify-between bg-[#25253f] px-2 py-4">
+            <p class="text-white">Fri</p>
+            <img class="w-[50px] h-[50px]" src="./assets/images/icon-partly-cloudy.webp" alt="rain-icon">
+            <div class="w-full flex justify-between text-white">
+              <p>25&deg</p>
+              <p>13&deg</p>
+            </div>
+          </div>
+          <!--sat-->
+          <div class="flex flex-col gap-2 rounded-lg items-center justify-between bg-[#25253f] px-2 py-4">
+            <p class="text-white">Sat</p>
+            <img class="w-[50px] h-[50px]" src="./assets/images/icon-storm.webp" alt="rain-icon">
+            <div class="w-full flex justify-between text-white">
+              <p>21&deg</p>
+              <p>15&deg</p>
+            </div>
+          </div>
+          <!--Sun-->
+          <div class="flex flex-col gap-2 rounded-lg items-center justify-between bg-[#25253f] px-2 py-4">
+            <p class="text-white">Sun</p>
+            <img class="w-[50px] h-[50px]" src="./assets/images/icon-snow.webp" alt="rain-icon">
+            <div class="w-full flex justify-between text-white">
+              <p>25&deg</p>
+              <p>16&deg</p>
+            </div>
+          </div>
+          <!--Mon-->
+          <div class="flex flex-col gap-2 rounded-lg items-center justify-between bg-[#25253f] px-2 py-4">
+            <p class="text-white">Mon</p>
+            <img class="w-[50px] h-[50px]" src="./assets/images/icon-fog.webp" alt="rain-icon">
+            <div class="w-full flex justify-between text-white">
+              <p>24&deg</p>
+              <p>15&deg</p>
+            </div>
+          </div>
+         </div>
+       </div>
+
+       <!-- Hourly Forecast -->
+   </section>
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">Kelechi Eze</a>.
+  </footer>
+
+  <!-- JavaScript -->
+   <script>
+    const cityInput = document.getElementById("city-input");
+    const searchBtn = document.getElementById("search-button");
+
+    const cityName = document.getElementById("city-name");
+    const currentTemp = document.getElementById("current-temp");
+    const humidity = document.getElementById("humidity");
+    const windSpeed = document.getElementById("wind-speed");
+    const feelsLike = document.getElementById("feels-like");
+    const precipitation = document.getElementById("precipitation");
+    searchBtn.addEventListener("click", () => {
+      const city = cityInput.value.trim();
+
+      if (city === "") {
+        alert("Please enter a city.");
+        return;
+      }
+      getWeather(city);
+      cityInput.value = "";
+    });
+
+    cityInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        searchBtn.click();
+      }
+    })
+
+    // Function for getting weather data from API
+    const apiKey = "b1d86b32f0bdeb6686749230882cfd06";
+
+    async function getWeather(city) {
+      try {
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error("City not found");
+        }
+        const data = await response.json();
+        cityName.textContent = data.name;
+        currentTemp.textContent = data.main.temp;
+        console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+    
+   </script>
+</body>
+</html>
