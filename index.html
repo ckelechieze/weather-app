@@ -85,11 +85,16 @@
           <!--text-->
           <div class="flex flex-col items-center justify-center gap-3 mt-8">
             <h2 id="city-name" class="text-white font-semibold text-2xl">Berlin, Germany</h2>
-            <p class="text-white">Tuesday, Jun 30, 2026</p>
+            <p class="text-white">Tuesday, Jul 3, 2025</p>
+            <p id="description" class="text-gray-400 font-semibold text-2xl bg-gray-300 p-2 rounded-xl tracking-widest">How the sky looks</p>
           </div>
           <!--icons-->
           <div class="flex items-center justify-center mt-4">
-            <img class="w-[120px]" src="./assets/images/icon-sunny.webp" alt="">
+            <img 
+            id="weather-icon" 
+            class="w-[120px]" 
+            src="./assets/images/icon-sunny.webp" 
+            alt="weather-icon">
             <h2 id="current-temp" class="text-[65px] text-white font-semibold">20&deg</h2>
           </div>
          </div>
@@ -208,6 +213,9 @@
     const windSpeed = document.getElementById("wind-speed");
     const feelsLike = document.getElementById("feels-like");
     const precipitation = document.getElementById("precipitation");
+    const weatherIcon = document.getElementById("weather-icon");
+    const desc = document.getElementById("description");
+
     searchBtn.addEventListener("click", () => {
       const city = cityInput.value.trim();
 
@@ -238,12 +246,16 @@
           throw new Error("City not found");
         }
         const data = await response.json();
-        cityName.textContent = data.name;
+        cityName.textContent = `${data.name}, ${data.sys.country}`;
         currentTemp.textContent = `${data.main.temp}°`;
         console.log(data);
         humidity.textContent = `${data.main.humidity}%`;
         windSpeed.textContent = `${data.wind.speed} m/s`;
         feelsLike.textContent = `${Math.round(data.main.feels_like)}°`;
+        desc.textContent = data.weather[0].description;
+
+        const iconCode = data.weather[0].icon
+        weatherIcon.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
     } catch (error) {
       console.log(error);
     }
