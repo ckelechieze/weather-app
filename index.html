@@ -85,7 +85,7 @@
           <!--text-->
           <div class="flex flex-col items-center justify-center gap-3 mt-8">
             <h2 id="city-name" class="text-white font-semibold text-2xl">Berlin, Germany</h2>
-            <p class="text-white">Tuesday, Aug 5, 2025</p>
+            <p class="text-white">Tuesday, Jun 30, 2026</p>
           </div>
           <!--icons-->
           <div class="flex items-center justify-center mt-4">
@@ -104,7 +104,7 @@
 
         <div class="bg-[#25253f] flex flex-col gap-4 p-4 h-[110px] rounded-lg">
           <p class="text-gray-400">Humidity</p>
-          <p id="humididty" class="text-white text-2xl font-dm">46%</p>
+          <p id="humidity" class="text-white text-2xl font-dm">46%</p>
         </div>
 
         <div class="bg-[#25253f] flex flex-col gap-4 p-4 h-[110px] rounded-lg">
@@ -212,7 +212,7 @@
       const city = cityInput.value.trim();
 
       if (city === "") {
-        alert("Please enter a city.");
+        alert("First enter a city my guy.");
         return;
       }
       getWeather(city);
@@ -239,8 +239,11 @@
         }
         const data = await response.json();
         cityName.textContent = data.name;
-        currentTemp.textContent = data.main.temp;
+        currentTemp.textContent = `${data.main.temp}°`;
         console.log(data);
+        humidity.textContent = `${data.main.humidity}%`;
+        windSpeed.textContent = `${data.wind.speed} m/s`;
+        feelsLike.textContent = `${Math.round(data.main.feels_like)}°`;
     } catch (error) {
       console.log(error);
     }
